@@ -16,6 +16,7 @@ function errorHandler(err, req, res, next) {
   //Ya que no usamos el next aquí, este será el último middleware que vamos a ejecutar.
 }
 
+//Boom nos ayuda a enviar statusCode y respuestas dinámicas
 function boomErrorHandler(err, req, res, next) {
   if (err.isBoom) {
     const { output } = err;

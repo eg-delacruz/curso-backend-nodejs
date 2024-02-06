@@ -46,6 +46,7 @@ routerApi(app);
 //Los middleware de tipo error van siempre después del routing. Se ejecutan al momento en que se encuentra un error
 app.use(logErrors);
 app.use(boomErrorHandler);
+//Ponemos el boomErrorHandler para verificar si es un error de boom y que este middleware se encargue de enviar una respuesta de error al cliente. Si esto ocurre y viendo la lógica del boomErrorHandler, el middleware de errorHandler no se llegará a ejecutar
 app.use(errorHandler);
 
 //Le decimos en qué puerto va a correr la app

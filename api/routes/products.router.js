@@ -64,11 +64,15 @@ router.patch(
   },
 );
 
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-  const rta = await service.delete(id);
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const rta = await service.delete(id);
 
-  res.json(rta);
+    res.json(rta);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
