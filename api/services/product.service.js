@@ -1,5 +1,5 @@
 const { faker } = require('@faker-js/faker');
-//const boom = require('@hapi/boom');
+const boom = require('@hapi/boom');
 
 class ProductsService {
   //Mientras no apaguemos el servidor, los datos generados desde el constructor se van a persistir hasta que apaguemso el servidor.
@@ -44,12 +44,12 @@ class ProductsService {
   async findOne(id) {
     const product = this.products.find((item) => item.id === id);
     if (!product) {
-      //throw boom.notFound('Product not found');
-      throw new Error('Product not found');
+      throw boom.notFound('Product not found');
+      //throw new Error('Product not found');
     }
     if (product.isBlock) {
-      //throw boom.conflict('Product is blocked');
-      throw new Error('Product is blocked');
+      throw boom.conflict('Product is blocked');
+      //throw new Error('Product is blocked');
     }
     return product;
   }
@@ -57,8 +57,8 @@ class ProductsService {
   async update(id, changes) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
-      // throw boom.notFound('Product not found');
-      throw new Error('Product not found');
+      throw boom.notFound('Product not found');
+      //throw new Error('Product not found');
     }
     const product = this.products[index];
     this.products[index] = {
@@ -72,8 +72,8 @@ class ProductsService {
     const index = this.products.findIndex((item) => item.id === id);
 
     if (index === -1) {
-      //throw boom.notFound('Product not found');
-      throw new Error('Product not found');
+      throw boom.notFound('Product not found');
+      //throw new Error('Product not found');
     }
     this.products.splice(index, 1);
     return { id };

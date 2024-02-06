@@ -1,4 +1,4 @@
-//const boom = require('@hapi/boom');
+const boom = require('@hapi/boom');
 
 //Property es la propiedad donde irá la data
 function validatorHandler(schema, property) {
@@ -9,8 +9,8 @@ function validatorHandler(schema, property) {
     //El abortEarly es para que envíe todos lo errores de forma conjunta y no uno a uno
     const { error } = schema.validate(data, { abortEarly: false });
     if (error) {
-      //next(boom.badRequest(error));
-      next(error);
+      next(boom.badRequest(error));
+      //next(error);
     }
     //Si no hay ningún error, dejamos que el servicio siga ejecutándose
     next();
