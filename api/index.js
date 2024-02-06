@@ -53,3 +53,5 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Mi port: ${port}`);
 });
+
+module.exports = app;
